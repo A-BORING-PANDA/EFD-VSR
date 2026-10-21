@@ -1,0 +1,45 @@
+name: 300KDCN
+model_type: EvLowLightVSR_Model
+scale: 4
+num_gpu: 1
+manual_seed: 0
+
+datasets:
+  test:
+    name: DSEC_Test
+    type: DSECVSRDataset
+    dataroot_gt: ~/dataset/DSEC_new/test/GT
+    dataroot_lq: ~/dataset/DSEC_new/test/LowLightLRx4
+    dataroot_voxel: ~/dataset/DSEC_new/test/Voxels
+    meta_info_file: ~/basicsr/data/meta_info/meta_info_DSEC_test.txt
+    io_backend:
+      type: disk
+    pad_scale: 8
+
+network_g:
+  type: EFDVSR
+  dim: 32
+  num_blocks: 5
+  use_DCNGuidePROP: true
+
+path:
+  pretrain_network_g: ~/experiments/EFDVSR_x4/models/net_g_latest.pth
+  strict_load_g: true
+
+val:
+  save_img: true
+  suffix: ~
+  metrics:
+    psnr:
+      type: calculate_psnr
+      crop_border: 0
+      test_y_channel: false
+    ssim:
+      type: calculate_ssim
+      crop_border: 0
+      test_y_channel: false
+    lpips:
+      type: calculate_lpips
+      crop_border: 0
+      test_y_channel: false
+
