@@ -7,7 +7,9 @@ code for "Illuminating the Dark: Event-Flow Guided Deformable Alignment for Low-
 ### Test
 We have uploaded the pretrained model and the test dataset. The test dataset is a subset of the DSEC dataset.
 The pretrain model, visual result, dataset is in [Google](https://drive.google.com/drive/folders/1qKv449eNe09bUvm23Wy4rzymw6LQ7R1l?usp=drive_link)
+
 Please put the folder in
+
 - Pretrained model: `~/experiments/EFDVSR_x4/models/net_g_latest.pth`
 - Test dataset: `~/dataset/test`
 
